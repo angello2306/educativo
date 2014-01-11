@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Lname:
+  = @teacher.lname
+%p
+  %b Fname:
+  = @teacher.fname
+%p
+  %b Dni:
+  = @teacher.dni
+%p
+  %b Birthday:
+  = @teacher.birthday
+%p
+  %b Address:
+  = @teacher.address
+%p
+  %b Phone:
+  = @teacher.phone
+
+= link_to 'Edit', edit_admin_teacher_path(@teacher)
+\|
+= link_to 'Back', admin_teachers_path

@@ -1,0 +1,35 @@
+-title 'Listing <%= plural_table_name %>'
+
+.row
+  .col-md-6
+    = link_to 'New <%= human_name %>', new_admin_<%= singular_table_name %>_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_<%= plural_table_name %>_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      <% for attribute in attributes -%>
+%th <%= attribute.human_name %>
+      <% end -%>
+%th
+      %th
+      %th
+  %tbody
+  - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+    %tr
+      %td= <%= singular_table_name %>.id
+<% for attribute in attributes -%>
+      %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+      %td= link_to 'Show', admin_<%= singular_table_name %>_path(<%= singular_table_name %>)
+      %td= link_to 'Edit', edit_admin_<%= singular_table_name %>_path(<%= singular_table_name %>)
+      %td= link_to 'Destroy', [:admin, <%= singular_table_name %>], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

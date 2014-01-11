@@ -1,0 +1,41 @@
+-title 'Listing teachers'
+
+.row
+  .col-md-6
+    = link_to 'New Teacher', new_admin_teacher_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_teachers_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Lname
+      %th Fname
+      %th Dni
+      %th Birthday
+      %th Address
+      %th Phone
+      %th
+      %th
+      %th
+  %tbody
+  - @teachers.each do |teacher|
+    %tr
+      %td= teacher.id
+      %td= teacher.lname
+      %td= teacher.fname
+      %td= teacher.dni
+      %td= teacher.birthday
+      %td= teacher.address
+      %td= teacher.phone
+      %td= link_to 'Show', admin_teacher_path(teacher)
+      %td= link_to 'Edit', edit_admin_teacher_path(teacher)
+      %td= link_to 'Destroy', [:admin, teacher], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

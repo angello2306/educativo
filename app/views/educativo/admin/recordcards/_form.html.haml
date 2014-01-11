@@ -1,0 +1,69 @@
+- if @recordcard.id
+	- @btn_submit = t('form.btn_update')
+- else
+	- @btn_submit = t('form.btn_create')
+
+= form_errors(@recordcard)
+
+.well
+	= form_for [:admin, @recordcard], :html => {:class => "form-horizontal", :role => "form"} do |form|
+		.form-group{class: has_errors(@recordcard, :level_id) }
+			= form.label :level_id, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :level_id, class: 'form-control'
+				= field_errors(@recordcard, :level_id)
+		.form-group{class: has_errors(@recordcard, :grade_id) }
+			= form.label :grade_id, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :grade_id, class: 'form-control'
+				= field_errors(@recordcard, :grade_id)
+		.form-group{class: has_errors(@recordcard, :section_id) }
+			= form.label :section_id, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :section_id, class: 'form-control'
+				= field_errors(@recordcard, :section_id)
+		.form-group{class: has_errors(@recordcard, :course_id) }
+			= form.label :course_id, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :course_id, class: 'form-control'
+				= field_errors(@recordcard, :course_id)
+		.form-group{class: has_errors(@recordcard, :student_id) }
+			= form.label :student_id, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :student_id, class: 'form-control'
+				= field_errors(@recordcard, :student_id)
+		.form-group{class: has_errors(@recordcard, :p1) }
+			= form.label :p1, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :p1, class: 'form-control'
+				= field_errors(@recordcard, :p1)
+		.form-group{class: has_errors(@recordcard, :p2) }
+			= form.label :p2, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :p2, class: 'form-control'
+				= field_errors(@recordcard, :p2)
+		.form-group{class: has_errors(@recordcard, :p3) }
+			= form.label :p3, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :p3, class: 'form-control'
+				= field_errors(@recordcard, :p3)
+		.form-group{class: has_errors(@recordcard, :p4) }
+			= form.label :p4, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :p4, class: 'form-control'
+				= field_errors(@recordcard, :p4)
+		.form-group{class: has_errors(@recordcard, :em) }
+			= form.label :em, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :em, class: 'form-control'
+				= field_errors(@recordcard, :em)
+		.form-group{class: has_errors(@recordcard, :eb) }
+			= form.label :eb, class: 'col-lg-2 control-label'
+			.col-lg-6
+				= form.number_field :eb, class: 'form-control'
+				= field_errors(@recordcard, :eb)
+
+		.form-group
+			%div{:class => "col-lg-offset-2 col-lg-10"}
+				= form.submit @btn_submit, class: 'btn btn-primary'
+				= link_to t('form.btn_cancel'), admin_recordcards_path, class: 'btn btn-default'

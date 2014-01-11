@@ -1,0 +1,20 @@
+- if @level.id
+  - @btn_submit = t('form.btn_update')
+- else
+  - @btn_submit = t('form.btn_create')
+
+= form_errors(@level)
+
+.well
+  = form_for [:admin, @level], :html => {:class => "form-horizontal", :role => "form"} do |form|
+
+      .form-group{class: has_errors(@level, :name) }
+      = form.label :name, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :name, class: 'form-control'
+        = field_errors(@level, :name)
+  
+    .form-group
+      %div{:class => "col-lg-offset-2 col-lg-10"}
+        = form.submit @btn_submit, class: 'btn btn-primary'
+        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'

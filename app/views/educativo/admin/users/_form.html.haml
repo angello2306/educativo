@@ -1,0 +1,30 @@
+- if @user.id
+  - @btn_submit = t('form.btn_update')
+- else
+  - @btn_submit = t('form.btn_create')
+
+= form_errors(@user)
+
+.well
+  = form_for [:admin, @user], :html => {:class => "form-horizontal", :role => "form"} do |form|
+
+      .form-group{class: has_errors(@user, :username) }
+      = form.label :username, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :username, class: 'form-control'
+        = field_errors(@user, :username)
+      .form-group{class: has_errors(@user, :password) }
+      = form.label :password, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :password, class: 'form-control'
+        = field_errors(@user, :password)
+      .form-group{class: has_errors(@user, :type_user) }
+      = form.label :type_user, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.number_field :type_user, class: 'form-control'
+        = field_errors(@user, :type_user)
+  
+    .form-group
+      %div{:class => "col-lg-offset-2 col-lg-10"}
+        = form.submit @btn_submit, class: 'btn btn-primary'
+        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'

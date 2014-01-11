@@ -1,0 +1,35 @@
+-title 'Listing courses'
+
+.row
+  .col-md-6
+    = link_to 'New Course', new_admin_course_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_courses_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Level
+      %th Grade
+      %th
+      %th
+      %th
+  %tbody
+  - @courses.each do |course|
+    %tr
+      %td= course.id
+      %td= course.name
+      %td= course.level_id
+      %td= course.grade_id
+      %td= link_to 'Show', admin_course_path(course)
+      %td= link_to 'Edit', edit_admin_course_path(course)
+      %td= link_to 'Destroy', [:admin, course], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

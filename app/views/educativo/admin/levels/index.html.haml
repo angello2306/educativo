@@ -1,0 +1,31 @@
+-title 'Listing levels'
+
+.row
+  .col-md-6
+    = link_to 'New Level', new_admin_level_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_levels_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th
+      %th
+      %th
+  %tbody
+  - @levels.each do |level|
+    %tr
+      %td= level.id
+      %td= level.name
+      %td= link_to 'Show', admin_level_path(level)
+      %td= link_to 'Edit', edit_admin_level_path(level)
+      %td= link_to 'Destroy', [:admin, level], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

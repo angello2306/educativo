@@ -1,0 +1,41 @@
+-title 'Listing students'
+
+.row
+  .col-md-6
+    = link_to 'New Student', new_admin_student_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_students_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Lname
+      %th Fname
+      %th Birthday
+      %th Address
+      %th Phone
+      %th Photo
+      %th
+      %th
+      %th
+  %tbody
+  - @students.each do |student|
+    %tr
+      %td= student.id
+      %td= student.lname
+      %td= student.fname
+      %td= student.birthday
+      %td= student.address
+      %td= student.phone
+      %td= student.photo
+      %td= link_to 'Show', admin_student_path(student)
+      %td= link_to 'Edit', edit_admin_student_path(student)
+      %td= link_to 'Destroy', [:admin, student], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

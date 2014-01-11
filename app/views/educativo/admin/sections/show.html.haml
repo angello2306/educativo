@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @section.name
+%p
+  %b Grade:
+  = @section.grade_id
+
+= link_to 'Edit', edit_admin_section_path(@section)
+\|
+= link_to 'Back', admin_sections_path

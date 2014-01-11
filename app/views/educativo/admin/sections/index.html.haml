@@ -1,0 +1,33 @@
+-title 'Listing sections'
+
+.row
+  .col-md-6
+    = link_to 'New Section', new_admin_section_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_sections_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Grade
+      %th
+      %th
+      %th
+  %tbody
+  - @sections.each do |section|
+    %tr
+      %td= section.id
+      %td= section.name
+      %td= section.grade_id
+      %td= link_to 'Show', admin_section_path(section)
+      %td= link_to 'Edit', edit_admin_section_path(section)
+      %td= link_to 'Destroy', [:admin, section], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

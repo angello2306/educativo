@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Level:
+  = @recordcard.level_id
+%p
+  %b Grade:
+  = @recordcard.grade_id
+%p
+  %b Section:
+  = @recordcard.section_id
+%p
+  %b Course:
+  = @recordcard.course_id
+%p
+  %b Student:
+  = @recordcard.student_id
+%p
+  %b P1:
+  = @recordcard.p1
+%p
+  %b P2:
+  = @recordcard.p2
+%p
+  %b P3:
+  = @recordcard.p3
+%p
+  %b P4:
+  = @recordcard.p4
+%p
+  %b Em:
+  = @recordcard.em
+%p
+  %b Eb:
+  = @recordcard.eb
+
+= link_to 'Edit', edit_admin_recordcard_path(@recordcard)
+\|
+= link_to 'Back', admin_recordcards_path

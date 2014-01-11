@@ -1,0 +1,45 @@
+- if @student.id
+  - @btn_submit = t('form.btn_update')
+- else
+  - @btn_submit = t('form.btn_create')
+
+= form_errors(@student)
+
+.well
+  = form_for [:admin, @student], :html => {:class => "form-horizontal", :role => "form"} do |form|
+
+      .form-group{class: has_errors(@student, :lname) }
+      = form.label :lname, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :lname, class: 'form-control'
+        = field_errors(@student, :lname)
+      .form-group{class: has_errors(@student, :fname) }
+      = form.label :fname, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :fname, class: 'form-control'
+        = field_errors(@student, :fname)
+      .form-group{class: has_errors(@student, :birthday) }
+      = form.label :birthday, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.date_select :birthday, class: 'form-control'
+        = field_errors(@student, :birthday)
+      .form-group{class: has_errors(@student, :address) }
+      = form.label :address, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_area :address, class: 'form-control'
+        = field_errors(@student, :address)
+      .form-group{class: has_errors(@student, :phone) }
+      = form.label :phone, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :phone, class: 'form-control'
+        = field_errors(@student, :phone)
+      .form-group{class: has_errors(@student, :photo) }
+      = form.label :photo, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :photo, class: 'form-control'
+        = field_errors(@student, :photo)
+  
+    .form-group
+      %div{:class => "col-lg-offset-2 col-lg-10"}
+        = form.submit @btn_submit, class: 'btn btn-primary'
+        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'

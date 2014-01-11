@@ -1,0 +1,51 @@
+-title 'Listing recordcards'
+
+.row
+  .col-md-6
+    = link_to 'New Recordcard', new_admin_recordcard_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_recordcards_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Level
+      %th Grade
+      %th Section
+      %th Course
+      %th Student
+      %th P1
+      %th P2
+      %th P3
+      %th P4
+      %th Em
+      %th Eb
+      %th
+      %th
+      %th
+  %tbody
+  - @recordcards.each do |recordcard|
+    %tr
+      %td= recordcard.id
+      %td= recordcard.level_id
+      %td= recordcard.grade_id
+      %td= recordcard.section_id
+      %td= recordcard.course_id
+      %td= recordcard.student_id
+      %td= recordcard.p1
+      %td= recordcard.p2
+      %td= recordcard.p3
+      %td= recordcard.p4
+      %td= recordcard.em
+      %td= recordcard.eb
+      %td= link_to 'Show', admin_recordcard_path(recordcard)
+      %td= link_to 'Edit', edit_admin_recordcard_path(recordcard)
+      %td= link_to 'Destroy', [:admin, recordcard], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

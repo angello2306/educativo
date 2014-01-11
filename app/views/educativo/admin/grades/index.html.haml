@@ -1,0 +1,33 @@
+-title 'Listing grades'
+
+.row
+  .col-md-6
+    = link_to 'New Grade', new_admin_grade_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_grades_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Level
+      %th
+      %th
+      %th
+  %tbody
+  - @grades.each do |grade|
+    %tr
+      %td= grade.id
+      %td= grade.name
+      %td= grade.level_id
+      %td= link_to 'Show', admin_grade_path(grade)
+      %td= link_to 'Edit', edit_admin_grade_path(grade)
+      %td= link_to 'Destroy', [:admin, grade], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
