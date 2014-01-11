@@ -8,18 +8,18 @@
 .well
   = form_for [:admin, @section], :html => {:class => "form-horizontal", :role => "form"} do |form|
 
-      .form-group{class: has_errors(@section, :name) }
+    .form-group{class: has_errors(@section, :name) }
       = form.label :name, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.text_field :name, class: 'form-control'
         = field_errors(@section, :name)
-      .form-group{class: has_errors(@section, :grade_id) }
+    .form-group{class: has_errors(@section, :grade_id) }
       = form.label :grade_id, class: 'col-lg-2 control-label'
       .col-lg-6
-        = form.number_field :grade_id, class: 'form-control'
+        = form.select :grade_id,  options_for_select(@grades.map{|s| ["#{s.name} #{s.level.name}", s.id]}, @section.grade_id), {},{ class: 'form-control'}
         = field_errors(@section, :grade_id)
-  
+
     .form-group
       %div{:class => "col-lg-offset-2 col-lg-10"}
         = form.submit @btn_submit, class: 'btn btn-primary'
-        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'
+        = link_to t('form.btn_cancel'), admin_sections_path, class: 'btn btn-default'

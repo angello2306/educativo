@@ -1,8 +1,8 @@
--title 'Listing sections'
+-title 'Listado de Secciones'
 
 .row
   .col-md-6
-    = link_to 'New Section', new_admin_section_path, { :class=>"btn btn-primary" }
+    = link_to 'Nueva Seccion', new_admin_section_path, { :class=>"btn btn-primary" }
   .col-md-6{:style => "text-align:right"}
     = form_tag(admin_sections_path, :method => "post", :class => "form-inline") do
       .form-group
@@ -15,9 +15,8 @@
   %thead
     %tr
       %th #
-      %th Name
-      %th Grade
-      %th
+      %th Nombre
+      %th Grado
       %th
       %th
   %tbody
@@ -25,9 +24,9 @@
     %tr
       %td= section.id
       %td= section.name
-      %td= section.grade_id
-      %td= link_to 'Show', admin_section_path(section)
-      %td= link_to 'Edit', edit_admin_section_path(section)
-      %td= link_to 'Destroy', [:admin, section], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        ="#{section.grade.name} #{section.grade.level.name}"
+      %td= link_to 'Editar', edit_admin_section_path(section)
+      %td= link_to 'Eliminar', [:admin, section], :method => :delete, :data => { :confirm => 'Estas Seguro?' }
 
 %br

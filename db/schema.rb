@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20140111212243) do
 
   create_table "courses", force: true do |t|
     t.string   "name"
-    t.integer  "level_id"
     t.integer  "grade_id"
     t.datetime "created_at"
     t.datetime "updated_at"

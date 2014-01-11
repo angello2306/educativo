@@ -1,8 +1,8 @@
--title 'Listing levels'
+-title 'Listado de Niveles'
 
 .row
   .col-md-6
-    = link_to 'New Level', new_admin_level_path, { :class=>"btn btn-primary" }
+    = link_to 'Nuevo Nivel', new_admin_level_path, { :class=>"btn btn-primary" }
   .col-md-6{:style => "text-align:right"}
     = form_tag(admin_levels_path, :method => "post", :class => "form-inline") do
       .form-group
@@ -15,8 +15,7 @@
   %thead
     %tr
       %th #
-      %th Name
-      %th
+      %th Nombre
       %th
       %th
   %tbody
@@ -24,8 +23,7 @@
     %tr
       %td= level.id
       %td= level.name
-      %td= link_to 'Show', admin_level_path(level)
-      %td= link_to 'Edit', edit_admin_level_path(level)
-      %td= link_to 'Destroy', [:admin, level], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Editar', edit_admin_level_path(level)
+      %td= link_to 'Eliminar', [:admin, level], :method => :delete, :data => { :confirm => 'Estas seguro?' }
 
 %br

@@ -2,6 +2,7 @@
 class Admin::GradesController < Admin::BackendController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_levels , only: [:new, :edit]
   # GET /grades
   # GET /grades.json
   def index
@@ -66,6 +67,11 @@ class Admin::GradesController < Admin::BackendController
   end
 
   private
+
+     def set_levels
+      @levels = Level.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_grade
       @grade = Grade.find(params[:id])

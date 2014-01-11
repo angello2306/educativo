@@ -1,11 +1,10 @@
 #Generate by Carlos Montalvo
 class Course < ActiveRecord::Base
 
-belongs_to :level
 belongs_to :grade
 has_many :recordcards
 
-attr_accessible :name, :level_id, :grade_id
+attr_accessible :name, :grade_id
 
   # Use for function search
   def self.search(search, per_page, page)

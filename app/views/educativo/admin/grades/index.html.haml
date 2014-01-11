@@ -1,8 +1,8 @@
--title 'Listing grades'
+-title 'Lista de Grados'
 
 .row
   .col-md-6
-    = link_to 'New Grade', new_admin_grade_path, { :class=>"btn btn-primary" }
+    = link_to 'Nuevo Grado', new_admin_grade_path, { :class=>"btn btn-primary" }
   .col-md-6{:style => "text-align:right"}
     = form_tag(admin_grades_path, :method => "post", :class => "form-inline") do
       .form-group
@@ -15,9 +15,8 @@
   %thead
     %tr
       %th #
-      %th Name
-      %th Level
-      %th
+      %th Nombre
+      %th Nivel
       %th
       %th
   %tbody
@@ -25,9 +24,8 @@
     %tr
       %td= grade.id
       %td= grade.name
-      %td= grade.level_id
-      %td= link_to 'Show', admin_grade_path(grade)
-      %td= link_to 'Edit', edit_admin_grade_path(grade)
-      %td= link_to 'Destroy', [:admin, grade], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= grade.level.name
+      %td= link_to 'Editar', edit_admin_grade_path(grade)
+      %td= link_to 'Eliminar', [:admin, grade], :method => :delete, :data => { :confirm => 'Estas Seguro?' }
 
 %br

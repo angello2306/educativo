@@ -1,6 +1,9 @@
 # Generate by Carlos Montalvo
 class Admin::SectionsController < Admin::BackendController
   before_action :set_section, only: [:show, :edit, :update, :destroy]
+  before_action :set_grades, only: [:new,:edit]
+
+
 
   # GET /sections
   # GET /sections.json
@@ -66,6 +69,10 @@ class Admin::SectionsController < Admin::BackendController
   end
 
   private
+    def set_grades
+      @grades = Grade.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_section
       @section = Section.find(params[:id])

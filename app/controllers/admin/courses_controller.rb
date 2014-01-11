@@ -1,6 +1,8 @@
 # Generate by Carlos Montalvo
 class Admin::CoursesController < Admin::BackendController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_grades, only: [:new,:edit]
+
 
   # GET /courses
   # GET /courses.json
@@ -66,6 +68,10 @@ class Admin::CoursesController < Admin::BackendController
   end
 
   private
+    def set_grades
+      @grades = Grade.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
@@ -73,6 +79,6 @@ class Admin::CoursesController < Admin::BackendController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:name, :level_id, :grade_id)
+      params.require(:course).permit(:name, :grade_id)
     end
 end
