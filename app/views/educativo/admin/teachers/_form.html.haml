@@ -8,38 +8,38 @@
 .well
   = form_for [:admin, @teacher], :html => {:class => "form-horizontal", :role => "form"} do |form|
 
-      .form-group{class: has_errors(@teacher, :lname) }
+    .form-group{class: has_errors(@teacher, :lname) }
       = form.label :lname, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.text_field :lname, class: 'form-control'
         = field_errors(@teacher, :lname)
-      .form-group{class: has_errors(@teacher, :fname) }
+    .form-group{class: has_errors(@teacher, :fname) }
       = form.label :fname, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.text_field :fname, class: 'form-control'
         = field_errors(@teacher, :fname)
-      .form-group{class: has_errors(@teacher, :dni) }
+    .form-group{class: has_errors(@teacher, :dni) }
       = form.label :dni, class: 'col-lg-2 control-label'
       .col-lg-6
-        = form.number_field :dni, class: 'form-control'
+        = form.text_field :dni, class: 'form-control'
         = field_errors(@teacher, :dni)
-      .form-group{class: has_errors(@teacher, :birthday) }
+    .form-group{class: has_errors(@teacher, :birthday) }
       = form.label :birthday, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.date_select :birthday, class: 'form-control'
         = field_errors(@teacher, :birthday)
-      .form-group{class: has_errors(@teacher, :address) }
+    .form-group{class: has_errors(@teacher, :address) }
       = form.label :address, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.text_area :address, class: 'form-control'
         = field_errors(@teacher, :address)
-      .form-group{class: has_errors(@teacher, :phone) }
+    .form-group{class: has_errors(@teacher, :phone) }
       = form.label :phone, class: 'col-lg-2 control-label'
       .col-lg-6
         = form.text_field :phone, class: 'form-control'
         = field_errors(@teacher, :phone)
-  
+
     .form-group
       %div{:class => "col-lg-offset-2 col-lg-10"}
         = form.submit @btn_submit, class: 'btn btn-primary'
-        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'
+        = link_to t('form.btn_cancel'), admin_teachers_path, class: 'btn btn-default'

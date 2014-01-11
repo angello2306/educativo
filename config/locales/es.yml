@@ -1,0 +1,90 @@
+es:
+  locale_name: "Español"
+
+  helpers:
+    label:
+      student:
+        lname: "Apellidos"
+        fname: 'Nombres'
+        birthday: 'Fecha de Nacimiento'
+        address: 'Direccion'
+        phone: 'Telefono'
+        photo: 'Foto'
+      parent:
+        student_id: "Alumnos"
+        lname: "Apellidos"
+        fname: 'Nombres'
+        dni: "DNI"
+      teacher:
+        lname: "Apellidos"
+        fname: 'Nombres'
+        dni: 'DNI'
+        birthday: 'Fecha de Nacimiento'
+        address: 'Direccion'
+        phone: 'Telefono'
+
+  form:
+    btn_create: 'Crear'
+    btn_update: 'Actualizar'
+    btn_cancel: 'Cancelar'
+    btn_search: 'Buscar'
+
+
+
+
+  date:
+    order:
+      - :day
+      - :month
+      - :year
+
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+     default: ! '%d/%m/%Y'
+     long: ! '%A, %d de %B de %Y'
+     short: ! '%d de %b'
+    month_names:
+    -
+    - enero
+    - febrero
+    - marzo
+    - abril
+    - mayo
+    - junio
+    - julio
+    - agosto
+    - septiembre
+    - octubre
+    - noviembre
+    - diciembre
+
+

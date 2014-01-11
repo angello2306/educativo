@@ -1,5 +1,7 @@
 Educativo::Application.routes.draw do
 
+
+
 	namespace :admin do
 
     #get "login" => "sessions#index"
@@ -7,6 +9,8 @@ Educativo::Application.routes.draw do
     resources :teachers
 
 	  resources :recordcards
+
+	  resources :parents
 
 	  resources :sections
 

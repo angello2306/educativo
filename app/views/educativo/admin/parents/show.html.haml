@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Student:
+  = @parent.student_id
+%p
+  %b Lname:
+  = @parent.lname
+%p
+  %b Fname:
+  = @parent.fname
+%p
+  %b Dni:
+  = @parent.dni
+
+= link_to 'Edit', edit_admin_parent_path(@parent)
+\|
+= link_to 'Back', admin_parents_path

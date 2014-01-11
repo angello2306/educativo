@@ -1,8 +1,8 @@
--title 'Listing students'
+-title 'Listado de alumnos'
 
 .row
   .col-md-6
-    = link_to 'New Student', new_admin_student_path, { :class=>"btn btn-primary" }
+    = link_to 'Nuevo Alumno', new_admin_student_path, { :class=>"btn btn-primary" }
   .col-md-6{:style => "text-align:right"}
     = form_tag(admin_students_path, :method => "post", :class => "form-inline") do
       .form-group
@@ -15,13 +15,12 @@
   %thead
     %tr
       %th #
-      %th Lname
-      %th Fname
-      %th Birthday
-      %th Address
-      %th Phone
-      %th Photo
-      %th
+      %th Apellidos
+      %th Nombres
+      %th Cumpleaños
+      %th Dirección
+      %th Telefono
+      %th Foto
       %th
       %th
   %tbody
@@ -34,8 +33,7 @@
       %td= student.address
       %td= student.phone
       %td= student.photo
-      %td= link_to 'Show', admin_student_path(student)
-      %td= link_to 'Edit', edit_admin_student_path(student)
-      %td= link_to 'Destroy', [:admin, student], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Editar', edit_admin_student_path(student)
+      %td= link_to 'Eliminar', [:admin, student], :method => :delete, :data => { :confirm => 'Estas Seguro?' }
 
 %br

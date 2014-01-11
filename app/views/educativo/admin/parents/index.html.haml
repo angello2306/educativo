@@ -1,0 +1,35 @@
+-title 'Listado Padres'
+
+.row
+  .col-md-6
+    = link_to 'Nuevo Padre', new_admin_parent_path, { :class=>"btn btn-primary" }
+  .col-md-6{:style => "text-align:right"}
+    = form_tag(admin_parents_path, :method => "post", :class => "form-inline") do
+      .form-group
+        = text_field_tag("search[q]", params[:q], :class => "form-control")
+      .form-group
+        = submit_tag(t('form.btn_search'), :class => "btn btn-default")
+%hr
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th #
+      %th Alumno
+      %th Apellidos
+      %th Nombres
+      %th Dni
+      %th
+      %th
+  %tbody
+  - @parents.each do |parent|
+    %tr
+      %td= parent.id
+      %td= parent.student_id
+      %td= parent.lname
+      %td= parent.fname
+      %td= parent.dni
+      %td= link_to 'Editar', edit_admin_parent_path(parent)
+      %td= link_to 'Eliminar', [:admin, parent], :method => :delete, :data => { :confirm => 'Estas Seguro?' }
+
+%br

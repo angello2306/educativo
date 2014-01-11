@@ -8,15 +8,15 @@
 .well
   = form_for [:admin, @<%= singular_table_name %>], :html => {:class => "form-horizontal", :role => "form"} do |form|
 
-  <% for attribute in attributes -%>
-    .form-group{class: has_errors(@<%= singular_table_name %>, :<%= attribute.name %>) }
-      = form.label :<%= attribute.name %>, class: 'col-lg-2 control-label'
-      .col-lg-6
-        = form.<%= attribute.field_type %> :<%= attribute.name %>, class: 'form-control'
-        = field_errors(@<%= singular_table_name %>, :<%= attribute.name %>)
-  <% end -%>
+<% for attribute in attributes -%>
+  .form-group{class: has_errors(@<%= singular_table_name %>, :<%= attribute.name %>) }
+    = form.label :<%= attribute.name %>, class: 'col-lg-2 control-label'
+    .col-lg-6
+      = form.<%= attribute.field_type %> :<%= attribute.name %>, class: 'form-control'
+      = field_errors(@<%= singular_table_name %>, :<%= attribute.name %>)
+<% end -%>
 
     .form-group
       %div{:class => "col-lg-offset-2 col-lg-10"}
         = form.submit @btn_submit, class: 'btn btn-primary'
-        = link_to t('form.btn_cancel'), admin_root_path, class: 'btn btn-default'
+        = link_to t('form.btn_cancel'), admin_<%= plural_table_name %>_path, class: 'btn btn-default'

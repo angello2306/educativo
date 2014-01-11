@@ -1,16 +1,15 @@
 #Generate by Carlos Montalvo
-class Student < ActiveRecord::Base
+class Parent < ActiveRecord::Base
 
-has_many :recordcards
-has_many :parents
+belongs_to :student
 
-attr_accessible :lname, :fname, :birthday, :address, :phone, :photo
+attr_accessible :student_id, :lname, :fname, :dni
 
   # Use for function search
   def self.search(search, per_page, page)
   if search
     paginate :per_page => per_page, :page => page,
-             :conditions => [ 'lname like ?', "%#{search[:q]}%"], :order => 'id DESC'
+             :conditions => [ 'student_id like ?', "%#{search[:q]}%"], :order => 'id DESC'
   else
     paginate :per_page => per_page, :page => page, :order => 'id DESC'
   end

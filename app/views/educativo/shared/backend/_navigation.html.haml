@@ -1,0 +1,54 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Sistema Educativo", root_path, :class => 'navbar-brand'
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li.active
+          %a{:href => "#"} Escritorio
+
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Mantenimiento
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => admin_students_path } Alumnos
+            %li
+              %a{:href => admin_parents_path} Padres
+            %li.divider
+            %li
+              %a{:href => admin_teachers_path} Profesores
+            %li
+              %a{:href => admin_parents_path} Cursos
+            %li.divider
+            %li
+              %a{:href => admin_teachers_path} Niveles
+            %li
+              %a{:href => admin_parents_path} Grados
+            %li
+              %a{:href => admin_parents_path} Secciones
+
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Consultas
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => admin_students_path } Notas
+
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Reportes
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => admin_students_path } Notas
+
+
+
+

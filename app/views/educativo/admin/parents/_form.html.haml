@@ -1,0 +1,35 @@
+- if @parent.id
+  - @btn_submit = t('form.btn_update')
+- else
+  - @btn_submit = t('form.btn_create')
+
+= form_errors(@parent)
+
+.well
+  = form_for [:admin, @parent], :html => {:class => "form-horizontal", :role => "form"} do |form|
+
+    .form-group{class: has_errors(@parent, :student_id) }
+      = form.label :student_id, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.select :student_id, options_for_select(@students.map{|s| ["#{s.lname} #{s.fname}",s.id]}, @parent.student_id), {},{ class: 'form-control'}
+        = field_errors(@parent, :student_id)
+    .form-group{class: has_errors(@parent, :lname) }
+      = form.label :lname, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :lname, class: 'form-control'
+        = field_errors(@parent, :lname)
+    .form-group{class: has_errors(@parent, :fname) }
+      = form.label :fname, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :fname, class: 'form-control'
+        = field_errors(@parent, :fname)
+    .form-group{class: has_errors(@parent, :dni) }
+      = form.label :dni, class: 'col-lg-2 control-label'
+      .col-lg-6
+        = form.text_field :dni, class: 'form-control'
+        = field_errors(@parent, :dni)
+
+    .form-group
+      %div{:class => "col-lg-offset-2 col-lg-10"}
+        = form.submit @btn_submit, class: 'btn btn-primary'
+        = link_to t('form.btn_cancel'), admin_parents_path, class: 'btn btn-default'

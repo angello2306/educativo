@@ -1,0 +1,1 @@
+json.extract! @parent, :id, :student_id, :lname, :fname, :dni, :created_at, :updated_at
