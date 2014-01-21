@@ -17,7 +17,7 @@
     .form-group{class: has_errors(@course, :grade_id) }
       = form.label :grade_id, class: 'col-lg-2 control-label'
       .col-lg-6
-        = form.select :grade_id,  options_for_select(@grades.map{|s| ["#{s.name} #{s.level.name}", s.id]}, @section.grade_id), {},{ class: 'form-control'}
+        = form.select :grade_id,  options_for_select(@grades.map{|s| ["#{s.name} #{s.level.name}", s.id]}, @course.grade_id), {},{ class: 'form-control'}
         = field_errors(@course, :grade_id)
 
     .form-group
