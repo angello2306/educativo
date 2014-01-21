@@ -29,7 +29,8 @@ es:
     btn_cancel: 'Cancelar'
     btn_search: 'Buscar'
 
-
+ session:
+   sign_in: "Inicio Sesion"
 
 
   date:
