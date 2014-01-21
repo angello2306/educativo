@@ -1,9 +1,11 @@
 #Generate by Carlos Montalvo
 class Parent < ActiveRecord::Base
 
+belongs_to :user
+
 belongs_to :student
 
-attr_accessible :student_id, :lname, :fname, :dni
+attr_accessible :student_id, :lname, :fname, :dni, :user_id
 
   # Use for function search
   def self.search(search, per_page, page)

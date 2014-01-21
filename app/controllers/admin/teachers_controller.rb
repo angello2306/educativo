@@ -73,6 +73,6 @@ class Admin::TeachersController < Admin::BackendController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:lname, :fname, :dni, :birthday, :address, :phone)
+      params.require(:teacher).permit(:lname, :fname, :dni, :birthday, :address, :phone, :user_id)
     end
 end

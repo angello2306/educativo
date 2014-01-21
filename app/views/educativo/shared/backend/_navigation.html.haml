@@ -48,7 +48,17 @@
           %ul.dropdown-menu
             %li
               %a{:href => admin_students_path } Notas
-
+        
+      - if user_logged?
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+              ="Bienvenido #{current_user.username}"
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{href: admin_log_out_path} Cerrar Session
+            
 
 
 

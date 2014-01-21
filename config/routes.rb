@@ -23,8 +23,14 @@ Educativo::Application.routes.draw do
 	  resources :students
 
 	  resources :users
+    
+    post 'validation' => 'sessions#validation', as: :validation
 
-    #root :to => "sessions#index"
+    get 'log_out' => 'sessions#logout', as: :log_out
+    
+    get 'log_in' => 'sessions#login', as: :log_in
+     
+    root :to => "sessions#login"
   end
 
 

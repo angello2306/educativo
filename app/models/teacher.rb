@@ -1,7 +1,9 @@
 #Generate by Carlos Montalvo
 class Teacher < ActiveRecord::Base
 
-attr_accessible :lname, :fname, :dni, :birthday, :address, :phone
+belongs_to :user
+
+attr_accessible :lname, :fname, :dni, :birthday, :address, :phone, :user_id
 
   # Use for function search
   def self.search(search, per_page, page)

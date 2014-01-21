@@ -81,6 +81,6 @@ class Admin::ParentsController < Admin::BackendController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:student_id, :lname, :fname, :dni)
+      params.require(:parent).permit(:student_id, :lname, :fname, :dni, :user_id)
     end
 end

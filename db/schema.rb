@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140111212243) do
   end
 
   create_table "parents", force: true do |t|
+    t.integer  "user_id"
     t.integer  "student_id"
     t.string   "lname"
     t.string   "fname"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140111212243) do
   end
 
   create_table "students", force: true do |t|
+    t.integer  "user_id"
     t.string   "lname"
     t.string   "fname"
     t.date     "birthday"
@@ -77,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140111212243) do
   end
 
   create_table "teachers", force: true do |t|
+    t.integer  "user_id"
     t.string   "lname"
     t.string   "fname"
     t.integer  "dni"
@@ -89,8 +92,10 @@ ActiveRecord::Schema.define(version: 20140111212243) do
 
   create_table "users", force: true do |t|
     t.string   "username"
-    t.string   "password"
+    t.string   "password_hash"
+    t.string   "password_halt"
     t.integer  "type_user"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

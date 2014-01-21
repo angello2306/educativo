@@ -9,16 +9,17 @@
     = csrf_meta_tags
   %body
     #main{:role => "main"}
-      = render 'shared/backend/navigation'
+      - if user_logged?
+        = render 'shared/backend/navigation'
 
       .container
         .content-wrapper
           .row
             #content.col-md-12
-
-              = render 'shared/backend/messages'
-              = render 'shared/backend/header_content'
+              - if user_logged?
+                = render 'shared/backend/messages'
+                = render 'shared/backend/header_content'
               = yield
-
-        %footer
-          = render 'shared/backend/footer'
+        - if user_logged?
+          %footer
+            = render 'shared/backend/footer'
