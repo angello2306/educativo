@@ -56,6 +56,10 @@
               ="Bienvenido #{current_user.username}"
               %b.caret
             %ul.dropdown-menu
+              - if user_admin?
+                %li
+                  %a{href: admin_users_path} Usuarios
+                
               %li
                 %a{href: admin_log_out_path} Cerrar Session
             

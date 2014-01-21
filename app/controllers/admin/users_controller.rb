@@ -1,7 +1,9 @@
 # Generate by Carlos Montalvo
 class Admin::UsersController < Admin::BackendController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  
+  before_filter :require_admin!
+  
   # GET /users
   # GET /users.json
   def index

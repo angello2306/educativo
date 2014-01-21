@@ -39,6 +39,15 @@ module SessionsHelper
     end
   end
   
+  def require_admin!
+
+    unless user_admin?
+
+      redirect_to admin_students_path, error: 'You dont have enough permissions to be here'
+
+    end
+  end
+  
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
 

@@ -10,7 +10,8 @@
 
 
 
-User.create(username: "angello", password: "tester", password_confirmation: "tester")
+User.create(username: "angello", password: "tester", password_confirmation: "tester", type_user: 200)
+User.create(username: "angello2", password: "tester", password_confirmation: "tester", type_user: 10)
 
 
 # # Load default levels

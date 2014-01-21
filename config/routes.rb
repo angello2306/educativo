@@ -35,5 +35,5 @@ Educativo::Application.routes.draw do
 
 
 
-  root :to => "home#index"
+  root :to => redirect("admin/log_in")
 end
