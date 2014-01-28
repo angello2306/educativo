@@ -26,11 +26,19 @@
       %th P4
       %th Em
       %th Eb
+      %th pp
+      %th pb
       %th
       %th
       %th
   %tbody
   - @recordcards.each do |recordcard|
+    -   r = recordcard
+
+    - pp = (r.p1 + r.p2 + r.p3 + r.p4 ) / 4
+
+    - pb = ( pp + r.em.to_i + r.eb.to_i ) / 3
+
     %tr
       %td= recordcard.id
       %td= recordcard.level.name
@@ -44,6 +52,8 @@
       %td= recordcard.p4
       %td= recordcard.em
       %td= recordcard.eb
+      %td= pp
+      %td= pb
       %td= link_to 'Show', admin_recordcard_path(recordcard)
       %td= link_to 'Edit', edit_admin_recordcard_path(recordcard)
       %td= link_to 'Destroy', [:admin, recordcard], :method => :delete, :data => { :confirm => 'Are you sure?' }

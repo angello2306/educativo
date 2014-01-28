@@ -9,6 +9,7 @@ class Admin::RecordcardsController < Admin::BackendController
     # Use for search
     @recordcards = Recordcard.search params[:search], 10, params[:page]
 
+
     #@recordcards = Recordcard.all
   end
 
