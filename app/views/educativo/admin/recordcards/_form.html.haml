@@ -3,64 +3,91 @@
 - else
 	- @btn_submit = t('form.btn_create')
 
+:coffeescript
+	$ ->
+	  $("select[data-option-dependent=true]").each (i) ->
+	    observer_dom_id = $(this).attr("id")
+	    observed_dom_id = $(this).data("option-observed")
+	    url_mask = $(this).data("option-url")
+	    key_method = $(this).data("option-key-method")
+	    value_method = $(this).data("option-value-method")
+	    prompt = if $(this).has("option[value=]").size() then $(this).find("option[value=]") else $("<option value=\"\">").text("Seleccionar")
+	    regexp = /:[0-9a-zA-Z_]+:/g
+	    observer = $("select#" + observer_dom_id)
+	    observed = $("#" + observed_dom_id)
+
+	    observer.attr "disabled", true  if not observer.val() and observed.size() > 1
+
+	    observed.on "change", ->
+	      observer.empty().append prompt
+
+	      if observed.val()
+	        url = url_mask.replace(regexp, observed.val())
+
+	        $.getJSON url, (data) ->
+	          $.each data, (i, object) ->
+	            observer.append $("<option>").attr("value", object[key_method]).text(object[value_method])
+	            observer.attr "disabled", false
+
+
 = form_errors(@recordcard)
 
 .well
 	= form_for [:admin, @recordcard], :html => {:class => "form-horizontal", :role => "form"} do |form|
 		.form-group{class: has_errors(@recordcard, :level_id) }
 			= form.label :level_id, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :level_id, class: 'form-control'
+			.col-lg-4
+				= form.select :level_id, options_for_select(@levels.map{|s| [s.name, s.id]}, @recordcard.level_id), {:prompt => "Seleccionar Nivel"},{class: 'form-control' }
 				= field_errors(@recordcard, :level_id)
 		.form-group{class: has_errors(@recordcard, :grade_id) }
 			= form.label :grade_id, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :grade_id, class: 'form-control'
+			.col-lg-4
+				= form.select :grade_id,  options_from_collection_for_select([], "id", "name"), {}, { class: 'form-control', :data => { "option_dependent" => true, "option_observed" => "recordcard_level_id", "option_url" => "/admin/ajax/grades/:level_id:/show.json", "option_key_method" => :id, "option_value_method" => :name}}
 				= field_errors(@recordcard, :grade_id)
 		.form-group{class: has_errors(@recordcard, :section_id) }
 			= form.label :section_id, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :section_id, class: 'form-control'
+			.col-lg-4
+				= form.select :section_id,  options_from_collection_for_select([], "id", "name"), {}, { class: 'form-control', :data => { "option_dependent" => true, "option_observed" => "recordcard_grade_id", "option_url" => "/admin/ajax/sections/:grade_id:/show.json", "option_key_method" => :id, "option_value_method" => :name}}
 				= field_errors(@recordcard, :section_id)
 		.form-group{class: has_errors(@recordcard, :course_id) }
 			= form.label :course_id, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :course_id, class: 'form-control'
+			.col-lg-4
+				= form.select :course_id,  options_from_collection_for_select([], "id", "name"), {}, { class: 'form-control', :data => { "option_dependent" => true, "option_observed" => "recordcard_grade_id", "option_url" => "/admin/ajax/courses/:grade_id:/show.json", "option_key_method" => :id, "option_value_method" => :name}}
 				= field_errors(@recordcard, :course_id)
 		.form-group{class: has_errors(@recordcard, :student_id) }
 			= form.label :student_id, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :student_id, class: 'form-control'
+			.col-lg-4
+				= form.select :student_id, options_for_select(@students.map{|s| [s.lname, s.id]}, @recordcard.student_id), {:prompt => "Seleccionar Alumno"},{class: 'form-control' }
 				= field_errors(@recordcard, :student_id)
 		.form-group{class: has_errors(@recordcard, :p1) }
 			= form.label :p1, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :p1, class: 'form-control'
+			.col-lg-1
+				= form.text_field :p1, class: 'form-control'
 				= field_errors(@recordcard, :p1)
 		.form-group{class: has_errors(@recordcard, :p2) }
 			= form.label :p2, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :p2, class: 'form-control'
+			.col-lg-1
+				= form.text_field :p2, class: 'form-control'
 				= field_errors(@recordcard, :p2)
 		.form-group{class: has_errors(@recordcard, :p3) }
 			= form.label :p3, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :p3, class: 'form-control'
+			.col-lg-1
+				= form.text_field :p3, class: 'form-control'
 				= field_errors(@recordcard, :p3)
 		.form-group{class: has_errors(@recordcard, :p4) }
 			= form.label :p4, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :p4, class: 'form-control'
+			.col-lg-1
+				= form.text_field :p4, class: 'form-control'
 				= field_errors(@recordcard, :p4)
 		.form-group{class: has_errors(@recordcard, :em) }
 			= form.label :em, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :em, class: 'form-control'
+			.col-lg-1
+				= form.text_field :em, class: 'form-control'
 				= field_errors(@recordcard, :em)
 		.form-group{class: has_errors(@recordcard, :eb) }
 			= form.label :eb, class: 'col-lg-2 control-label'
-			.col-lg-6
-				= form.number_field :eb, class: 'form-control'
+			.col-lg-1
+				= form.text_field :eb, class: 'form-control'
 				= field_errors(@recordcard, :eb)
 
 		.form-group

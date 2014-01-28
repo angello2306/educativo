@@ -33,10 +33,10 @@
   - @recordcards.each do |recordcard|
     %tr
       %td= recordcard.id
-      %td= recordcard.level_id
-      %td= recordcard.grade_id
-      %td= recordcard.section_id
-      %td= recordcard.course_id
+      %td= recordcard.level.name
+      %td= recordcard.grade.name
+      %td= recordcard.section.name
+      %td= recordcard.course.name
       %td= recordcard.student_id
       %td= recordcard.p1
       %td= recordcard.p2

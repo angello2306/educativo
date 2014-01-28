@@ -2,6 +2,7 @@
 class Admin::RecordcardsController < Admin::BackendController
   before_action :set_recordcard, only: [:show, :edit, :update, :destroy]
 
+  before_action :set_load , only: [:new, :edit]
   # GET /recordcards
   # GET /recordcards.json
   def index
@@ -66,6 +67,17 @@ class Admin::RecordcardsController < Admin::BackendController
   end
 
   private
+
+    def set_load
+      @levels = Level.all
+
+      @students = Student.all
+
+
+
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_recordcard
       @recordcard = Recordcard.find(params[:id])

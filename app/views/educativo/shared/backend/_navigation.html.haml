@@ -16,6 +16,10 @@
             Mantenimiento
             %b.caret
           %ul.dropdown-menu
+
+            %li
+              %a{:href => admin_recordcards_path } Notas
+            %li.divider
             %li
               %a{:href => admin_students_path } Alumnos
             %li
@@ -48,7 +52,7 @@
           %ul.dropdown-menu
             %li
               %a{:href => admin_students_path } Notas
-        
+
       - if user_logged?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
@@ -59,10 +63,10 @@
               - if user_admin?
                 %li
                   %a{href: admin_users_path} Usuarios
-                
+
               %li
                 %a{href: admin_log_out_path} Cerrar Session
-            
+
 
 
 
