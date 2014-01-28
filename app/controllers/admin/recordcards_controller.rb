@@ -24,6 +24,13 @@ class Admin::RecordcardsController < Admin::BackendController
 
   # GET /recordcards/1/edit
   def edit
+
+    r = @recordcard
+
+    @pp = (r.p1 + r.p2 + r.p3 + r.p4 ) / 4
+
+    @pb = ( @pp + r.em.to_i + r.eb.to_i ) / 3
+
   end
 
   # POST /recordcards

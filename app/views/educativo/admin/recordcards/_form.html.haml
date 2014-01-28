@@ -90,6 +90,21 @@
 				= form.text_field :eb, class: 'form-control'
 				= field_errors(@recordcard, :eb)
 
+
+		.form-group{class: has_errors(@recordcard, :eb) }
+			= form.label "pp", class: 'col-lg-2 control-label'
+			.col-lg-1
+				= text_field_tag "pp",@pp, class: 'form-control'
+
+
+		.form-group{class: has_errors(@recordcard, :eb) }
+			= form.label "pb", class: 'col-lg-2 control-label'
+			.col-lg-1
+				= text_field_tag "pb",@pb, class: 'form-control'
+
+
+
+
 		.form-group
 			%div{:class => "col-lg-offset-2 col-lg-10"}
 				= form.submit @btn_submit, class: 'btn btn-primary'
